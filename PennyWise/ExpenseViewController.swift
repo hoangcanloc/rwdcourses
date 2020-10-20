@@ -65,7 +65,7 @@ class ExpenseViewController: UIViewController {
     @IBAction func btnDone(sender: UIButton) {
         var spent:Float = 0
         if let text = resultLabel.text {
-            let numericText = String(text.characters.dropFirst())
+            let numericText = String(text.dropFirst())
             spent = (numericText as NSString).floatValue
         }
         delegate?.expenseViewController(expenseViewController: self, didExpenseCategory:
@@ -132,9 +132,7 @@ extension ExpenseViewController: NumberViewDelegate {
 
 extension ExpenseViewController: UICollectionViewDelegate {
     
-    private func collectionView(collectionView: UICollectionView,
-                                willDisplayCell cell: UICollectionViewCell,
-                                forItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if let cell = cell as? CategoryCell {
             if cell.category?.name == selectedCategory?.name {
                 collectionView.selectItem(at: indexPath as IndexPath, animated: true,
@@ -146,14 +144,13 @@ extension ExpenseViewController: UICollectionViewDelegate {
         }
     }
     
-    private func collectionView(collectionView: UICollectionView,
-                                didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath as IndexPath)
         cell?.setNeedsDisplay()
     }
     
-    private func collectionView(collectionView: UICollectionView,
-                                didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
         selectedCategory = categories[indexPath.row]
         let cell = collectionView.cellForItem(at: indexPath as IndexPath)
         

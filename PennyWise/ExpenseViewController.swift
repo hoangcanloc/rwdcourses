@@ -104,7 +104,7 @@ extension ExpenseViewController: NumberViewDelegate {
         switch number {
         case backspace:
             text = String(text.dropLast())
-            if text.characters.count == 0 {
+            if text.count == 0 {
                 text = "0"
             }
         case decimalPoint where text.count < maxLength:
@@ -114,7 +114,7 @@ extension ExpenseViewController: NumberViewDelegate {
                 text = text + "."
             }
         default:
-            if text.characters.count < maxLength {
+            if text.count < maxLength {
                 text = text + "\(number)"
                 
                 // drop front 0 if no decimal place involved

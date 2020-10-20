@@ -24,6 +24,7 @@
 		82538D5B1C3A31C300B79F6E /* NumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82538D5A1C3A31C300B79F6E /* NumberView.swift */; };
 		828DE61E1C3C9FA200A82B8B /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828DE61D1C3C9FA200A82B8B /* PDFViewController.swift */; };
 		82942A4F1C3CFD54006607D4 /* BudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82942A4E1C3CFD54006607D4 /* BudgetView.swift */; };
+		FA73F35A253F27DD0048D65B /* UIViewController+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA73F34E253F233C0048D65B /* UIViewController+Injection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		82538D5A1C3A31C300B79F6E /* NumberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberView.swift; sourceTree = "<group>"; };
 		828DE61D1C3C9FA200A82B8B /* PDFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
 		82942A4E1C3CFD54006607D4 /* BudgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetView.swift; sourceTree = "<group>"; };
+		FA73F34E253F233C0048D65B /* UIViewController+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Injection.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 		826D23851C4A6E95000B290C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FA73F34E253F233C0048D65B /* UIViewController+Injection.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA73F35A253F27DD0048D65B /* UIViewController+Injection.swift in Sources */,
 				82538D5B1C3A31C300B79F6E /* NumberView.swift in Sources */,
 				82538D311C3A07AE00B79F6E /* AppDelegate.swift in Sources */,
 				8215E4A11C3E4AF30040B202 /* SummaryView.swift in Sources */,
@@ -314,6 +318,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-Xlinker",
+					"-interposable",
+				);
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;

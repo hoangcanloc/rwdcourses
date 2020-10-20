@@ -30,8 +30,7 @@ import UIKit
 class NumberView: UIView {
     
     @IBOutlet var delegate:NumberViewDelegate?
-    
-    
+   
     var numberLabel:UILabel?
     var number: Int = 0 {
         didSet {
@@ -45,7 +44,7 @@ class NumberView: UIView {
         }
     }
     
-    @IBAction func handleTap(gesture:UITapGestureRecognizer) {
+    @objc func handleTap(gesture:UITapGestureRecognizer) {
         delegate?.numberTapped(number: number)
     }
     
@@ -56,6 +55,23 @@ class NumberView: UIView {
     
     override func prepareForInterfaceBuilder() {
         setup()
+    }
+    
+    var lineWidth: CGFloat = 2
+    var fillColor: UIColor = UIColor.red
+    var strokeColor : UIColor = UIColor.blue
+    override func draw(_ rect: CGRect) {
+        let insetRect = rect.insetBy(dx: lineWidth/2, dy: lineWidth/2)
+        let path = UIBezierPath(ovalIn: insetRect
+        )
+        path.lineWidth = lineWidth
+
+        fillColor.setFill()
+        path.fill()
+
+        strokeColor.setStroke()
+        path.stroke()
+        
     }
     
     func setup() {
@@ -72,6 +88,10 @@ class NumberView: UIView {
         numberLabel.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
         numberLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         numberLabel.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
+        
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(gesture:)))
+        isUserInteractionEnabled = true
+        addGestureRecognizer(gestureRecognizer)
     }
     
     override var intrinsicContentSize: CGSize {
